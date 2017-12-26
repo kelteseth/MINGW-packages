@@ -1,21 +1,21 @@
-# Maintainer (MSYS2): Michael Hansen <zrax0111@gmail.com>
+# $Id$
+# Maintainer (ArchLinux): Andrea Scarpino <andrea@archlinux.org>
+# Maintainer (MSYS2): Elias Steurer | Kelteseth <i@kelteseth.net>
 
 _variant=-${KF5_VARIANT:-shared}
 source "$(dirname ${BASH_SOURCE[0]})"/../mingw-w64-PKGBUILD-common/kde-frameworks5
 _kde_f5_init_package "${_variant}" "kcompletion"
-pkgver=5.38.0
+pkgver=5.36.0
 pkgrel=1
 arch=('any')
-pkgdesc="Text completion helpers and widgets for Qt (mingw-w64-qt5${_namesuff})"
+pkgdesc="Powerful completion framework, including completion-enabled lineedit and combobox. (mingw-w64-qt5${_namesuff})"
 license=('LGPL')
-makedepends=("${MINGW_PACKAGE_PREFIX}-extra-cmake-modules>=${pkgver}")
+makedepends=("${MINGW_PACKAGE_PREFIX}-extra-cmake-modules")
 depends=()
-_kde_f5_add_depends "${_variant}" "${MINGW_PACKAGE_PREFIX}-qt5${_namesuff}"
-_kde_f5_add_depends "${_variant}" "${MINGW_PACKAGE_PREFIX}-kconfig-qt5${_namesuff}>=${pkgver}"
-_kde_f5_add_depends "${_variant}" "${MINGW_PACKAGE_PREFIX}-kwidgetsaddons-qt5${_namesuff}>=${pkgver}"
+_kde_f5_add_depends "${_variant}" "${MINGW_PACKAGE_PREFIX}-qt5${_namesuff}" "${MINGW_PACKAGE_PREFIX}-bzip2"
 groups=('kf5')
-source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${_basename}-${pkgver}.tar.xz")
-sha256sums=('5c943799729e7ed8d101eb2e11a09a2616d6c13c33d3575b2e61667e0c2f2539')
+source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/${_basename}-${pkgver}.tar.xz")
+sha256sums=('377103eb36855e0bb971fc22c974f85792ee71a73e6705725047ccfe337320f2')
 
 prepare() {
   mkdir -p build-${CARCH}${_variant}
